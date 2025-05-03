@@ -17,7 +17,7 @@ export const Order_Delete = "/admin/orders/delete/:id";
 
 // client utils
 
-export const Client_Main = "/";
+export const Client_Main = "/pizzafy";
 export const Client_Bucket = "/pizzafy/bucket";
 export const Client_Order = "/pizzafy/order";
 export const Client_Success = "/pizzafy/success";

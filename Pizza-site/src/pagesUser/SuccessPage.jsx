@@ -6,10 +6,10 @@ function SuccessPage() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate("/");
+      navigate("/pizzafy");
     }, 4000);
 
-    return () => clearTimeout(timer); // Очистка таймера при размонтировании
+    return () => clearTimeout(timer); 
   }, [navigate]);
 
   return (

@@ -14,7 +14,7 @@ function BuyTicket() {
   });
 
   const navigate = useNavigate();
-  const { cart, setCart } = useCart(); // ⬅ получаем корзину
+  const { cart, setCart } = useCart(); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;

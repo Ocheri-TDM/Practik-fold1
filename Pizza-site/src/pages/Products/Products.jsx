@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Create_Products } from "../../utils/consts";
-import ProductsList from "../../components/Products/ProductSList";
+import ProductsList from "../../components/Products/ProductsList";
 
 function Products() {
     return(

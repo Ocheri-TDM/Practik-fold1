@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <main class="wrapper">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="./images/logo.svg" alt="Logo" />
+                <span class="logo-text">Pizzafy.</span>
+            </div>
+            <nav class="sidebar-nav">
+                <span class="sidebar-nav__link">
+                    Главная
+                </span>
+                <span class="sidebar-nav__link">
+                    Категории
+                </span>
+                <span class="sidebar-nav__link">
+                    Товары
+                </span>
+                <span class="sidebar-nav__link">
+                    Заказы
+                </span>
+            </nav>
+            <p class="sm-text">&copy;2025, Pizzafy. Все права защищены</p>
+        </div>
+        <div class="content">
+            <section class="block">
+                <div class="container">
+                    <span class="btn bg-danger">Назад</span>
+                    <h1 class="title">Создать товар</h1>
+                    <form class="form">
+                        <div class="form-control">
+                            <label for="name">Название товара</label>
+                            <input 
+                                value=""
+                                id="name" 
+                                type="text" 
+                                placeholder="Введите товара" 
+                                required 
+                            />
+                        </div>
+                        <div class="form-control">
+                            <label for="price">Цена</label>
+                            <input 
+                                value=""
+                                id="price" 
+                                type="number" 
+                                placeholder="Введите цену" 
+                                required 
+                            />
+                        </div>
+                        <div class="form-control">
+                            <label for="description">Описание</label>
+                            <textarea 
+                                value=""
+                                id="description" 
+                                placeholder="Введите описание" 
+                                required 
+                            ></textarea>
+                        </div>
+                        <div class="form-control">
+                            <label for="image">Фото</label>
+                            <input 
+                                value=""
+                                id="image" 
+                                type="url" 
+                                placeholder="Вставьте URL фото" 
+                                required 
+                            />
+                        </div>
+                        <div class="form-control">
+                            <label for="image">Укажите категорию</label>
+                            <select name="category" id="category">
+                                <option value="category">category</option>
+                            </select>
+                        </div>
+
+                        <button class="btn bg-primary" type="submit">Создать</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

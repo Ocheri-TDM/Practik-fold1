@@ -17,7 +17,7 @@ function Header() {
         </Link>
 
         <div className="header-actions1">
-          <Link to="/profile" className="icon-button1">
+          <Link to="/" className="icon-button1">
             <FaUser />
           </Link>
           <Link to={Client_Bucket} className="cart-button1 icon-button1">

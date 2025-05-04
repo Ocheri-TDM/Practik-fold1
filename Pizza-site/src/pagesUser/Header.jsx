@@ -3,7 +3,7 @@ import { FaShoppingCart, FaUser } from "react-icons/fa";
 import logo from "../assets/images/logo.svg";
 import { Client_Bucket, Client_Main } from "../utils/consts";
 import { useCart } from "../utils/CartContext.jsx";
-import "../assets/css/Header.css"; 
+import "../assets/css/header.css"; 
 function Header() {
   const { cart } = useCart() || {};
   const uniqueItemCount = cart?.length || 0;

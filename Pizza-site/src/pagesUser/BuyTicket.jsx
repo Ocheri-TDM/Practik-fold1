@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../utils/CartContext";
-import BackButton from "../components/Buttons/BackButton";
 import axios from "axios";
+import "../assets/css/buyticket.css";
+import BackButtonClient from "../components/Buttons/BackButtonClient";
 
 function BuyTicket() {
   const [form, setForm] = useState({
@@ -11,10 +12,13 @@ function BuyTicket() {
     email: "",
     address: "",
     city: "Алматы",
+    cardNumber: "",
+    cardExpiry: "",
+    cardCVV: "",
   });
 
   const navigate = useNavigate();
-  const { cart, setCart } = useCart(); 
+  const { cart, setCart } = useCart();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,10 +34,10 @@ function BuyTicket() {
     const orderData = {
       name: form.name,
       phone: form.phone,
-      email: form.email, 
-      date: new Date().toISOString(),
+      email: form.email,
       city: form.city,
       address: form.address,
+      date: new Date().toISOString(),
       items: cart.map((item) => ({
         productId: item.id,
         quantity: item.quantity,
@@ -43,9 +47,8 @@ function BuyTicket() {
     try {
       await axios.post("https://195e64a878c915dc.mokky.dev/orders", orderData);
       alert("Заказ успешно оформлен!");
-
-      setCart([]); 
-      navigate("/pizzafy/success"); 
+      setCart([]);
+      navigate("/pizzafy/success");
     } catch (error) {
       console.error("Ошибка при отправке заказа:", error);
       alert("Произошла ошибка при оформлении заказа.");
@@ -53,70 +56,92 @@ function BuyTicket() {
   };
 
   return (
-    <div className="container">
-      <BackButton />
-      <h1 className="title">Оформление заказа</h1>
-      <form className="form" onSubmit={handleSubmit}>
-        <div className="form-control">
-          <label htmlFor="name" className="label">Ваше имя</label>
+    <div className="buy-container1">
+      <BackButtonClient />
+      <h1 className="buy-title1">Оформление заказа</h1>
+      <form className="buy-form1" onSubmit={handleSubmit}>
+        <div className="form-control1">
           <input
             type="text"
             name="name"
             value={form.name}
             onChange={handleChange}
-            placeholder="Введите имя"
+            placeholder="Ваше имя"
             required
           />
         </div>
 
-        <div className="form-control">
-          <label htmlFor="phone" className="label">Номер телефона</label>
+        <div className="form-control1">
           <input
             type="text"
             name="phone"
             value={form.phone}
             onChange={handleChange}
-            placeholder="Введите номер телефона: +7 XXX XXX XX XX"
+            placeholder="Телефон: +7 XXX XXX XX XX"
             required
           />
         </div>
 
-        <div className="form-control">
-          <label htmlFor="email" className="label">Почта</label>
+        <div className="form-control1">
           <input
-            type="text"
+            type="email"
             name="email"
             value={form.email}
             onChange={handleChange}
-            placeholder="Введите адрес электронной почты: test@example.com"
+            placeholder="Электронная почта"
             required
           />
         </div>
 
-        <div className="form-control">
-          <label htmlFor="address" className="label">Напишите адрес</label>
+        <div className="form-control1">
           <textarea
             name="address"
             value={form.address}
             onChange={handleChange}
-            placeholder="Введите адрес, дом, квартиру, домофон"
+            placeholder="Адрес доставки"
             required
           ></textarea>
         </div>
 
-        <div className="form-control">
-          <label htmlFor="city" className="label">Укажите город</label>
-          <select
-            name="city"
-            value={form.city}
-            onChange={handleChange}
-          >
+        <div className="form-control1">
+          <select name="city" value={form.city} onChange={handleChange}>
             <option value="Алматы">Алматы</option>
             <option value="Астана">Астана</option>
           </select>
         </div>
 
-        <button type="submit" className="send-btn">Оформить заказ</button>
+        <h3 className="card-title1">Платёжные данные</h3>
+        <div className="form-control1">
+          <input
+            type="text"
+            name="cardNumber"
+            value={form.cardNumber}
+            onChange={handleChange}
+            placeholder="0000 0000 0000 0000"
+            maxLength={19}
+          />
+        </div>
+
+        <div className="card-details1">
+          <input
+            type="text"
+            name="cardExpiry"
+            value={form.cardExpiry}
+            onChange={handleChange}
+            placeholder="MM/YY"
+            maxLength={5}
+          />
+          <input
+            type="text"
+            name="cardCVV"
+            value={form.cardCVV}
+            onChange={handleChange}
+            placeholder="CVV"
+            maxLength={3}
+          />
+        </div>
+
+        <button type="submit" className="send-btn1">Оформить заказ</button>
       </form>
     </div>
   );

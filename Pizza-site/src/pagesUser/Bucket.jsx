@@ -1,83 +1,66 @@
 import { useCart } from "../utils/CartContext.jsx";
-import BackButton from "../components/Buttons/BackButton";
 import { Link, useNavigate } from "react-router-dom";
-import { Client_Main } from "../utils/consts.js";
+import { Client_Main } from "../utils/consts";
+import { FaTrash } from "react-icons/fa";
+import "../assets/css/bucket.css";
+import BackButtonClient from "../components/Buttons/BackButtonClient.jsx";
 
 function Bucket() {
-  const { cart, setCart } = useCart(); 
-
-  const navigate = useNavigate(); 
-
-  const handleOrder = () => {
-    navigate("/pizzafy/order");
-  };
+  const { cart, setCart } = useCart();
+  const navigate = useNavigate();
 
   const increase = (id) => {
-    setCart((prev) =>
-      prev.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
+    setCart(prev => prev.map(item => item.id === id ? { ...item, quantity: item.quantity + 1 } : item));
   };
 
   const decrease = (id) => {
-    setCart((prev) =>
-      prev.map((item) =>
-        item.id === id && item.quantity > 1
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      )
-    );
+    setCart(prev => prev.map(item =>
+      item.id === id && item.quantity > 1
+        ? { ...item, quantity: item.quantity - 1 }
+        : item
+    ));
   };
 
   const removeItem = (id) => {
-    setCart((prev) => prev.filter((item) => item.id !== id));
+    setCart(prev => prev.filter(item => item.id !== id));
   };
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <div className="container">
-      <BackButton />
-      <h1 className="title">Моя корзина</h1>
-      <table className="cart-table">
-        <thead>
-          <tr>
-            <th>Наименование продукта</th>
-            <th>Фото</th>
-            <th>Цена</th>
-            <th>Количество</th>
-            <th>Всего</th>
-            <th>Действие</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cart.map((item) => (
-            <tr key={item.id}>
-              <td>{item.name}</td>
-              <td>
-                <img src={item.image} className="cart-img" alt={item.name} />
-              </td>
-              <td>{item.price} &#8376;</td>
-              <td>
-                <div className="counter">
-                  <button className="circle" onClick={() => decrease(item.id)}>-</button>
-                  <span>{item.quantity}</span>
-                  <button className="circle" onClick={() => increase(item.id)}>+</button>
-                </div>
-              </td>
-              <td>{item.price * item.quantity} &#8376;</td>
-              <td>
-                <button className="delete-btn" onClick={() => removeItem(item.id)}>Удалить</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <h3 className="total-price">Итого: {total} &#8376;</h3>
-      <div className="cart-action">
-        <button className="cart-action__btn" onClick={handleOrder}>Оформление заказа</button>
-        <Link to={Client_Main} className="cart-action__btn">Продолжить покупку</Link>
+    <div className="bucket-container1">
+      <BackButtonClient />
+      <h1 className="bucket-title1">Моя корзина</h1>
+
+      <div className="cart-list1">
+        {cart.map((item) => (
+          <div className="cart-item1" key={item.id}>
+            <img src={item.image} alt={item.name} className="cart-item__img1" />
+            <div className="cart-item__info1">
+              <h3>{item.name}</h3>
+              <p>{item.price} ₸</p>
+              <div className="cart-counter1">
+                <button onClick={() => decrease(item.id)}>-</button>
+                <span>{item.quantity}</span>
+                <button onClick={() => increase(item.id)}>+</button>
+              </div>
+            </div>
+            <div className="cart-item__actions1">
+              <p>{item.price * item.quantity} ₸</p>
+              <button onClick={() => removeItem(item.id)} className="delete-icon1">
+                <FaTrash />
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="cart-summary1">
+        <h3>Итого: {total} ₸</h3>
+        <div className="cart-action1">
+          <button onClick={() => navigate("/pizzafy/order")}>Оформить заказ</button>
+          <Link to={Client_Main}>Продолжить покупки</Link>
+        </div>
       </div>
     </div>
   );

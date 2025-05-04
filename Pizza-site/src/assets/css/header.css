@@ -1,0 +1,64 @@
+.header1 {
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .header-container1 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo-link1 {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .logo-img1 {
+    height: 40px;
+    margin-right: 8px;
+  }
+  
+  .logo-text1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+  }
+  
+  .header-actions1 {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  
+  .icon-button1 {
+    position: relative;
+    font-size: 20px;
+    color: #333;
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+  
+  .icon-button1:hover {
+    transform: scale(1.1);
+  }
+  
+  .cart-button1 .cart-count1 {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    background-color: #ff3e3e;
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 12px;
+  }
+  

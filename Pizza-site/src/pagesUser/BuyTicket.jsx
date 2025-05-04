@@ -55,6 +55,8 @@ function BuyTicket() {
     }
   };
 
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
   return (
     <div className="buy-container1">
       <BackButtonClient />
@@ -139,6 +141,20 @@ function BuyTicket() {
             placeholder="CVV"
             maxLength={3}
           />
+        </div>
+
+        <div className="order-summary1">
+          <h3>Ваш заказ:</h3>
+          {cart.map((item) => (
+            <div key={item.id} className="order-item1">
+              <div>{item.name}</div>
+              <div>{item.quantity} x {item.price} ₸</div>
+              <div>{item.quantity * item.price} ₸</div>
+            </div>
+          ))}
+          <div className="order-total1">
+            <strong>Итого:</strong> {total} ₸
+          </div>
         </div>
 
         <button type="submit" className="send-btn1">Оформить заказ</button>

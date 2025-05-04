@@ -96,4 +96,9 @@
   .cart-action1 a {
     background: #333;
   }
-  
+  .empty-cart-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+    margin: 2rem 0;
+  }
